@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CONSOLE_URL } from '@/constants/constants';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +73,7 @@ const Header = () => {
             </ul>
             <div className="button">
               <Link
-                href="#download"
+                href={CONSOLE_URL}
                 className="px-6 py-2 text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors duration-300"
               >
                 Dashboard
