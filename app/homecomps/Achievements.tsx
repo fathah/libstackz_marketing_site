@@ -23,58 +23,46 @@ const Counter = ({ value, suffix = '' }: { value: number; suffix?: string }) => 
     });
   }, [springValue, suffix]);
 
-  return <span ref={ref} className="text-4xl lg:text-5xl font-bold text-primary block mb-2" />;
+  return <span ref={ref} className="text-4xl lg:text-5xl font-extrabold text-primary block mb-3" style={{ letterSpacing: '-0.02em' }} />;
 };
+
+const stats = [
+  { value: 10, suffix: '+', label: 'Institutes' },
+  { value: 500, suffix: '+', label: 'Members' },
+  { value: 100, suffix: '%', label: 'Cost Free' },
+];
 
 const Achievements = () => {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section className="py-24 lg:py-32 bg-surface-container">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl lg:text-4xl font-bold text-gray-900"
+            className="text-3xl lg:text-4xl font-bold text-on-surface tracking-tight"
+            style={{ letterSpacing: '-0.02em' }}
           >
             Trusted by prestigious institutes
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="p-6"
-          >
-            <Counter value={10} suffix="+" />
-            <p className="text-lg text-gray-600 font-medium">Institutes</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="p-6"
-          >
-            <Counter value={500} suffix="+" />
-            <p className="text-lg text-gray-600 font-medium">Members</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="p-6"
-          >
-            <Counter value={100} suffix="%" />
-            <p className="text-lg text-gray-600 font-medium">Cost Free</p>
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="p-10 bg-surface-lowest rounded-lg text-center"
+            >
+              <Counter value={stat.value} suffix={stat.suffix} />
+              <p className="text-sm font-medium text-on-surface-variant tracking-wide">{stat.label}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

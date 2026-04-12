@@ -12,13 +12,8 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -31,17 +26,20 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md py-4' : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        scrolled ? 'py-3' : 'py-5'
       }`}
+      style={scrolled ? {
+        backgroundColor: 'rgba(251, 249, 244, 0.85)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+      } : {}}
     >
-      <div className="container mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="flex items-center">
-             
-            <div 
-              className={`h-[40px] w-[150px] transition-colors duration-300 ${scrolled ? 'bg-primary' : 'bg-white'}`}
+            <div
+              className="h-[36px] w-[140px] bg-primary transition-colors duration-500"
               style={{
                 maskImage: 'url(/assets/logo.png)',
                 maskSize: 'contain',
@@ -55,73 +53,75 @@ const Header = () => {
             />
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <ul className="flex space-x-6">
+          <nav className="hidden lg:flex items-center gap-10">
+            <ul className="flex gap-8">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className={`text-base font-medium hover:text-primary/80 transition-colors ${
-                      scrolled ? 'text-gray-700' : 'text-white'
-                    }`}
+                    className="text-sm font-medium tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300"
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="button">
-              <Link
-                href={CONSOLE_URL}
-                className="px-6 py-2 text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors duration-300"
-              >
-                Dashboard
-              </Link>
-            </div>
+            <Link
+              href={CONSOLE_URL}
+              className="px-6 py-2.5 text-sm font-semibold text-on-primary rounded-full transition-all duration-300 hover:brightness-110"
+              style={{
+                background: 'linear-gradient(180deg, var(--primary) 0%, var(--primary-container) 100%)',
+              }}
+            >
+              Dashboard
+            </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-md focus:outline-none ${
-               scrolled ? 'text-gray-700' : 'text-white'
-            }`}
+            className="lg:hidden p-2 rounded-md focus:outline-none text-on-surface transition-colors"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white shadow-lg overflow-hidden"
+            className="lg:hidden overflow-hidden"
+            style={{
+              backgroundColor: 'rgba(251, 249, 244, 0.95)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+            }}
           >
-            <ul className="flex flex-col px-4 py-4 space-y-4">
+            <ul className="flex flex-col px-6 py-6 gap-5">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block text-gray-700 hover:text-primary font-medium"
+                    className="block text-on-surface-variant hover:text-primary font-medium text-sm tracking-wide"
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
               <li>
-                 <Link
-                    href="#download"
-                    onClick={() => setIsOpen(false)}
-                    className="block w-full text-center px-6 py-2 text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors duration-300"
-                  >
-                    Get it now
-                  </Link>
+                <Link
+                  href={CONSOLE_URL}
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-center px-6 py-2.5 text-on-primary rounded-full text-sm font-semibold"
+                  style={{
+                    background: 'linear-gradient(180deg, var(--primary) 0%, var(--primary-container) 100%)',
+                  }}
+                >
+                  Dashboard
+                </Link>
               </li>
             </ul>
           </motion.div>

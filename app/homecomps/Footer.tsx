@@ -5,55 +5,52 @@ import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {/* Brand & Social */}
+    <footer className="bg-on-surface pt-20 pb-10">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           <div>
             <Link href="/" className="inline-block mb-6">
-              <span className="text-2xl font-bold text-white">Libstackz</span>
-              {/* <img src="/assets/images/logo/logo-white.png" alt="Logo" className="h-10" /> */}
+              <span className="text-xl font-bold text-white tracking-tight">Libstackz</span>
             </Link>
-            <p className="text-gray-400 mb-6 max-w-sm">
+            <p className="text-sm text-white/40 mb-8 max-w-xs leading-relaxed">
               Your all-in-one solution for modern library management.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://www.facebook.com/ziqx.cr/" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook size={20} />
+            <div className="flex gap-4">
+              <a href="https://www.facebook.com/ziqx.cr/" className="text-white/30 hover:text-white transition-colors duration-300">
+                <Facebook size={18} />
               </a>
-              <a href="https://mobile.twitter.com/ziqx_cr" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter size={20} />
+              <a href="https://mobile.twitter.com/ziqx_cr" className="text-white/30 hover:text-white transition-colors duration-300">
+                <Twitter size={18} />
               </a>
-              <a href="https://www.instagram.com/ziqx_cr/" className="text-gray-400 hover:text-white transition-colors">
-                <Instagram size={20} />
+              <a href="https://www.instagram.com/ziqx_cr/" className="text-white/30 hover:text-white transition-colors duration-300">
+                <Instagram size={18} />
               </a>
-              <a href="https://www.linkedin.com/company/ziqx/" className="text-gray-400 hover:text-white transition-colors">
-                <Linkedin size={20} />
+              <a href="https://www.linkedin.com/company/ziqx/" className="text-white/30 hover:text-white transition-colors duration-300">
+                <Linkedin size={18} />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="lg:col-start-3">
-            <h3 className="text-lg font-bold mb-6">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-sm font-semibold text-white tracking-widest uppercase mb-6">Quick Links</h3>
+            <ul className="space-y-4">
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-sm text-white/40 hover:text-white transition-colors duration-300">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-sm text-white/40 hover:text-white transition-colors duration-300">
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-sm text-white/40 hover:text-white transition-colors duration-300">
                   Terms & Conditions
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-sm text-white/40 hover:text-white transition-colors duration-300">
                   Privacy Policy
                 </Link>
               </li>
@@ -61,10 +58,12 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-gray-400">
-            &copy; {new Date().getFullYear()} <a href="https://ziqx.in" className="hover:text-white transition-colors">Ziqx Creative Planet</a>
+        <div className="pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <p className="text-xs text-white/30 text-center">
+            &copy; {new Date().getFullYear()}{' '}
+            <a href="https://ziqx.in" className="hover:text-white/60 transition-colors duration-300">
+              Ziqx Creative Planet
+            </a>
           </p>
         </div>
       </div>

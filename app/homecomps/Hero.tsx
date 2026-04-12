@@ -1,68 +1,73 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { CONSOLE_URL } from '@/constants/constants';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { CONSOLE_URL } from "@/constants/constants";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-primary">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap items-center -mx-4">
-          <div className="w-full lg:w-5/12 px-4 mb-12 lg:mb-0">
-            <div className="hero-content text-center lg:text-left">
-              <motion.h1
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
-              >
-                Lightweight & Scalable library management system.
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="text-lg text-white/50 mb-8"
-              >
-                For uses in schools, colleges, public libraries, and everywhere there's some books.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4"
-              >
-                <Link
-                  href={CONSOLE_URL}
-                  className="px-8 py-3 text-base font-medium text-primary bg-white rounded-lg hover:bg-white/80 transition-colors duration-300"
-                >
-                  Get Started
-                </Link>
-                <Link
-                  href="#features"
-                  className="px-8 py-3 text-base font-medium bg-white/30 text-white rounded-lg hover:bg-white/20 transition-colors duration-300"
-                >
-                  Features
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-          <div className="w-full lg:w-7/12 px-4">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="hero-image relative z-10 text-center"
-            >
-              <img
-                src="/assets/images/hero/phone.png"
-                alt="App Screenshot"
-                className="max-w-full h-auto mx-auto"
-              />
-            </motion.div>
-          </div>
-        </div>
+    <section
+      id="home"
+      className="relative flex flex-col items-center justify-start overflow-hidden"
+      style={{
+        minHeight: "100svh",
+        backgroundImage: "url(/assets/images/hero.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center bottom",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-surface/80 to-transparent z-0" />
+
+      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center pt-34 lg:pt-48 pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-on-surface text-white text-xs font-medium tracking-wide mb-4"
+        >
+          Built for Libraries
+          <ArrowRight size={14} />
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-4xl sm:text-5xl lg:text-[3.75rem] font-extrabold text-on-surface mb-6 leading-[1.1]"
+          style={{ letterSpacing: "-0.02em" }}
+        >
+          Every book deserves <br />
+          <span className="text-primary">to be found</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="text-base text-on-surface-variant mb-8 max-w-lg mx-auto leading-relaxed"
+        >
+          The simple, powerful system that keeps your catalog organized, your
+          members happy, and your shelves running smoothly.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          <Link
+            href={CONSOLE_URL}
+            className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-on-primary rounded-full transition-all duration-300 hover:brightness-110"
+            style={{
+              background:
+                "linear-gradient(180deg, var(--primary) 0%, var(--primary-container) 100%)",
+            }}
+          >
+            Get started
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

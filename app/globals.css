@@ -1,9 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surface Hierarchy (warm paper tones) */
+  --surface: #fbf9f4;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f5f3ee;
+  --surface-container: #f0eee9;
+  --surface-container-high: #eae8e3;
+  --surface-container-highest: #e4e2dd;
+
+  /* Primary — kept from original */
   --primary: #007350;
+  --primary-container: #0a5e43;
+  --on-primary: #ffffff;
+
+  /* Secondary (accent / "Money Action") */
+  --secondary: #fdcf09;
+  --secondary-container: #fed00b;
+  --on-secondary-container: #1b1b00;
+
+  /* Text */
+  --on-surface: #1b1c19;
+  --on-surface-variant: #4c4546;
+  --outline-variant: #cfc4c5;
+
+  /* Legacy mappings */
+  --background: var(--surface);
+  --foreground: var(--on-surface);
 }
 
 * {
@@ -13,15 +36,34 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-surface: var(--surface);
+  --color-surface-lowest: var(--surface-container-lowest);
+  --color-surface-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-high: var(--surface-container-high);
+  --color-surface-highest: var(--surface-container-highest);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline-variant: var(--outline-variant);
+  --font-display: var(--font-manrope);
+  --font-body: var(--font-manrope);
 }
 
-
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface);
+  color: var(--on-surface-variant);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  color: var(--on-surface);
 }
