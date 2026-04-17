@@ -12,7 +12,7 @@ const Hero = () => {
       className="relative flex flex-col items-center justify-start overflow-hidden"
       style={{
         minHeight: "100svh",
-        backgroundImage: "url(/assets/images/hero.png)",
+        backgroundImage: "url(/assets/images/hero.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
