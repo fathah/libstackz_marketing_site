@@ -20,17 +20,7 @@ const Hero = () => {
     >
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-surface/80 to-transparent z-0" />
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center pt-34 lg:pt-48 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-on-surface text-white text-xs font-medium tracking-wide mb-4"
-        >
-          Built for Libraries
-          <ArrowRight size={14} />
-        </motion.div>
-
+      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center pt-34 lg:pt-38 pb-20">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

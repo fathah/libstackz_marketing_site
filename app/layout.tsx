@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     "library automation",
   ],
   authors: [{ name: "Ziqx Creative Planet", url: "https://ziqx.in" }],
-  creator: "Ziqx Creative Planet",
-  publisher: "Ziqx Creative Planet",
+  creator: "Ziqx CC LLP",
+  publisher: "Ziqx CC LLP",
   openGraph: {
     title: "Libstackz | Modern Library Management System",
     description:
