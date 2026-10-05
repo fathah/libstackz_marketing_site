@@ -1,0 +1,145 @@
+.section {
+  width: 100%;
+  padding: 104px var(--page-padding-desktop);
+  box-sizing: border-box;
+  scroll-margin-top: var(--header-height, 88px);
+}
+
+.white {
+  background-color: var(--color-background);
+}
+
+.light {
+  background-color: var(--color-background-tint);
+}
+
+.sectionInner {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 72px;
+}
+
+.imageLeft .sectionInner {
+  flex-direction: row;
+}
+
+.imageRight .sectionInner {
+  flex-direction: row-reverse;
+}
+
+.visualCol {
+  flex: 1;
+  max-width: 580px;
+  display: flex;
+  justify-content: center;
+}
+
+.imgWrap {
+  width: 100%;
+  height: auto;
+}
+
+.solutionImg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1536 / 1024;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+}
+
+.contentCol {
+  flex: 1;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.15;
+  color: var(--color-primary-dark);
+  margin: 0 0 16px 0;
+  max-width: 520px;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 28px 0;
+  max-width: 540px;
+}
+
+.featuresWrap {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.ctaWrap {
+  margin-top: 4px;
+}
+
+.ctaBtn {
+  padding: 14px 28px;
+  font-size: 15.5px;
+}
+
+@media (max-width: 1100px) {
+  .sectionInner {
+    gap: 48px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: var(--spacing-section-py-mobile, 64px) var(--page-padding-mobile, 20px);
+    scroll-margin-top: var(--header-height-mobile, 68px);
+  }
+
+  .sectionInner,
+  .imageLeft .sectionInner,
+  .imageRight .sectionInner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contentCol {
+    max-width: 100%;
+    width: 100%;
+    order: 1;
+  }
+
+  .visualCol {
+    max-width: 100%;
+    width: 100%;
+    order: 2;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .description {
+    font-size: 15.5px;
+  }
+}

@@ -1,80 +1,64 @@
-import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next';
+import { Inter, Manrope } from 'next/font/google';
+import './globals.css';
+import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
+import { PageTransition } from '@/components/providers/PageTransition';
 
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-inter',
+  display: 'swap',
 });
 
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-manrope',
+  display: 'swap',
+});
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#004734',
+};
+
 export const metadata: Metadata = {
-  title: "Libstackz | Modern Library Management System",
+  metadataBase: new URL('https://libstackz.com'),
+  title: 'Libstackz — Run your entire library from one dashboard',
   description:
-    "Libstackz is a lightweight, scalable, and cloud-based library management software for schools, colleges, and public libraries. Manage books, members, and transactions with ease.",
-  keywords: [
-    "library management system",
-    "library software",
-    "school library",
-    "college library",
-    "cloud library",
-    "libstackz",
-    "library automation",
-  ],
-  authors: [{ name: "Ziqx Creative Planet", url: "https://ziqx.in" }],
-  creator: "Ziqx CC LLP",
-  publisher: "Ziqx CC LLP",
+    'Libstackz brings cataloging, circulation, fines, membership, and a public catalogue into a single cloud platform, built for schools, colleges, and public libraries of any size.',
+  icons: {
+    icon: '/assets/brand/logo.svg',
+  },
   openGraph: {
-    title: "Libstackz | Modern Library Management System",
+    title: 'Libstackz — Run your entire library from one dashboard',
     description:
-      "The all-in-one solution for modern library management. Cloud backup, intuitive interface, and powerful database support.",
-    url: "https://libstackz.com",
-    siteName: "Libstackz",
+      'Libstackz brings cataloging, circulation, fines, membership, and a public catalogue into a single cloud platform.',
     images: [
       {
-        url: "https://libstackz.com/thumb.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Libstackz Dashboard Preview",
+        url: '/assets/illustrations/home/library-dashboard.webp',
+        width: 1536,
+        height: 1024,
+        alt: 'Libstackz library dashboard illustration',
       },
     ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Libstackz | Modern Library Management System",
-    description:
-      "Manage your library efficiently with Libstackz. Cloud-based, secure, and user-friendly.",
-    images: ["/thumb.jpg"],
-    creator: "@ziqx_cr",
-  },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={`${manrope.className} `}>{children}</body>
+    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+      <body>
+        <SmoothScrollProvider>
+          <PageTransition>{children}</PageTransition>
+        </SmoothScrollProvider>
+      </body>
     </html>
   );
 }

@@ -1,0 +1,87 @@
+.card {
+  background-color: var(--color-background-tint, #f0fff5);
+  border: 1px solid var(--border-light, #d4efdf);
+  border-radius: 20px;
+  padding: 28px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 961px) {
+  .card {
+    height: 233px;
+  }
+}
+
+.title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 16.5px;
+  line-height: 1.25;
+  color: var(--color-primary-dark);
+  margin: 0 0 16px 0;
+}
+
+.channelsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.channelRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  color: var(--color-primary-dark);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  line-height: 1.25;
+}
+
+.valueLink {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-secondary, #3a5245);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  word-break: break-word;
+}
+
+.valueLink:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+}

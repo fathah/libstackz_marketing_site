@@ -1,0 +1,70 @@
+.ctaWrap {
+  padding: 96px var(--page-padding-desktop);
+  background-color: var(--color-background);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ctaBox {
+  width: 100%;
+  max-width: var(--container-max-width);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-large, 26px);
+  padding: 76px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.ctaHeading {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 42px;
+  line-height: 1.12;
+  color: var(--color-primary-light, #f0fff5);
+  max-width: 700px;
+  margin: 0;
+}
+
+.ctaLead {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.56;
+  color: #c9ecd8;
+  max-width: 520px;
+  margin: 0;
+}
+
+.btnRow {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btnRow :global(.btn) {
+  padding: 16px 32px;
+}
+
+@media (max-width: 860px) {
+  .ctaWrap {
+    padding: 64px var(--page-padding-mobile);
+  }
+
+  .ctaBox {
+    padding: 56px 20px;
+  }
+
+  .ctaHeading {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .ctaLead {
+    font-size: 16px;
+  }
+}

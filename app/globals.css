@@ -1,69 +1,410 @@
-@import "tailwindcss";
+/**
+ * Libstackz Production Design System & Global Styles
+ * Source of truth: verified 1-to-1 against Figma & existing HTML/CSS references.
+ */
 
 :root {
-  /* Surface Hierarchy (warm paper tones) */
-  --surface: #fbf9f4;
-  --surface-container-lowest: #ffffff;
-  --surface-container-low: #f5f3ee;
-  --surface-container: #f0eee9;
-  --surface-container-high: #eae8e3;
-  --surface-container-highest: #e4e2dd;
+  /* ==========================================================================
+     1. RAW BRAND PALETTE
+     ========================================================================== */
+  --green-900: #004734;
+  --green-700: #007350;
+  --green-500: #33a969;
+  --green-50: #f0fff5;
 
-  /* Primary — kept from original */
-  --primary: #007350;
-  --primary-container: #0a5e43;
-  --on-primary: #ffffff;
+  /* Neutral palette */
+  --neutral-900: #1c1e1c;
+  --neutral-700: #434443;
+  --neutral-600: #5a5a5a;
+  --neutral-400: #8b908b;
+  --white: #ffffff;
 
-  /* Secondary (accent / "Money Action") */
-  --secondary: #fdcf09;
-  --secondary-container: #fed00b;
-  --on-secondary-container: #1b1b00;
+  /* Structural & border colors */
+  --border-default: #e4e7e4;
+  --border-light: #d4efdf;
+  --border-divider: #edefed;
+  --border-outline: #bcdccb;
 
-  /* Text */
-  --on-surface: #1b1c19;
-  --on-surface-variant: #4c4546;
-  --outline-variant: #cfc4c5;
+  /* Functional accent */
+  --badge-gold: #ffa300;
 
-  /* Legacy mappings */
-  --background: var(--surface);
-  --foreground: var(--on-surface);
+  /* Dark theme / section-specific accents */
+  --eyebrow-light: #eafff0;
+  --metrics-lead: #e0fbe9;
+  --cta-lead: #c9ecd8;
+
+  /* ==========================================================================
+     2. SEMANTIC COLOR TOKENS
+     ========================================================================== */
+  --color-primary: var(--green-500);
+  --color-primary-dark: var(--green-700);
+  --color-primary-darkest: var(--green-900);
+  --color-primary-light: var(--green-50);
+
+  --color-text-primary: var(--neutral-900);
+  --color-text-secondary: var(--neutral-700);
+  --color-text-tertiary: var(--neutral-600);
+  --color-text-muted: var(--neutral-400);
+
+  --color-border: var(--border-default);
+  --color-border-subtle: var(--border-light);
+  --color-divider: var(--border-divider);
+  --color-background: var(--white);
+  --color-background-tint: var(--green-50);
+  --color-accent: var(--badge-gold);
+
+  /* ==========================================================================
+     3. TYPOGRAPHY TOKENS (Mapped to next/font variables)
+     ========================================================================== */
+  --font-body: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-head: var(--font-manrope), "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* ==========================================================================
+     4. CONTAINER & LAYOUT DIMENSIONS
+     ========================================================================== */
+  --container-max-width: 1280px;
+  --header-height: 88px;
+  --header-height-mobile: 68px;
+
+  /* Horizontal padding */
+  --page-padding-desktop: 80px;
+  --page-padding-tablet: 40px;
+  --page-padding-mobile: 20px;
+
+  /* Section vertical padding */
+  --spacing-section-py-desktop: 104px;
+  --spacing-section-py-mobile: 64px;
+
+  /* ==========================================================================
+     5. RADIUS TOKENS
+     ========================================================================== */
+  --radius-button: 14px;
+  --radius-card: 22px;
+  --radius-plan: 22px;
+  --radius-large: 26px;
+  --radius-hero-image: 14px;
+  --radius-opac-image: 18px;
+  --radius-chip: 20px;
+  --radius-badge: 20px;
+  --radius-input: 12px;
+
+  /* ==========================================================================
+     6. MOTION & KINEMATIC EASING TOKENS
+     ========================================================================== */
+  --ease-awwwards: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* {
+/* ==========================================================================
+   7. MINIMAL PRODUCTION CSS RESET
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-container: var(--primary-container);
-  --color-on-primary: var(--on-primary);
-  --color-secondary: var(--secondary);
-  --color-secondary-container: var(--secondary-container);
-  --color-on-secondary-container: var(--on-secondary-container);
-  --color-surface: var(--surface);
-  --color-surface-lowest: var(--surface-container-lowest);
-  --color-surface-low: var(--surface-container-low);
-  --color-surface-container: var(--surface-container);
-  --color-surface-high: var(--surface-container-high);
-  --color-surface-highest: var(--surface-container-highest);
-  --color-on-surface: var(--on-surface);
-  --color-on-surface-variant: var(--on-surface-variant);
-  --color-outline-variant: var(--outline-variant);
-  --font-display: var(--font-manrope);
-  --font-body: var(--font-manrope);
+/* ==========================================================================
+   LENIS SMOOTH SCROLL INTEGRATION
+   ========================================================================== */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 body {
-  background: var(--surface);
-  color: var(--on-surface-variant);
-  font-family: var(--font-body), system-ui, sans-serif;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display), system-ui, sans-serif;
-  color: var(--on-surface);
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ==========================================================================
+   8. TYPOGRAPHY SYSTEM
+   ========================================================================== */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.eyebrow.eyebrow-light {
+  color: var(--eyebrow-light);
+}
+
+.h2 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  color: var(--color-primary-dark);
+}
+
+.lead {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--color-text-secondary);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.heading .h2 {
+  max-width: 700px;
+}
+
+.heading .lead {
+  max-width: 802px;
+}
+
+.heading.heading-left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* ==========================================================================
+   9. CHIP & BADGE SYSTEM
+   ========================================================================== */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-primary-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-chip);
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-primary-dark);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-accent);
+  color: var(--white);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1;
+  padding: 5px 13px;
+  border-radius: var(--radius-badge);
+}
+
+/* ==========================================================================
+   10. BUTTON SYSTEM & INTERACTIVE STATES
+   ========================================================================== */
+.btn {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
+  padding: 13px 24px;
+  border-radius: var(--radius-button);
+  border: 1.5px solid transparent;
+  background: var(--color-primary);
+  color: var(--color-primary-light);
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+}
+
+.btn:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+.btn-arrow {
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  filter: brightness(0.9);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+/* Button size variants */
+.btn-lg {
+  padding: 16px 28px;
+  font-size: 16px;
+}
+
+.btn-sm {
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+/* Button style variants */
+.btn-outline {
+  background: transparent;
+  border-color: var(--border-outline);
+  color: var(--color-primary-dark);
+}
+
+.btn-outline:hover {
+  background: rgba(0, 115, 80, 0.04);
+}
+
+.btn-white {
+  background: var(--white);
+  color: var(--color-primary);
+  border-color: transparent;
+}
+
+.btn-white:hover {
+  background: #f7faf8;
+}
+
+.btn-white:focus-visible {
+  outline-color: var(--white);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--color-primary-light);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-ghost:focus-visible {
+  outline-color: var(--white);
+}
+
+/* ==========================================================================
+   11. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   12. RESPONSIVE BREAKPOINTS (Typography scaling)
+   ========================================================================== */
+@media (max-width: 860px) {
+  .h2 {
+    font-size: 28px;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .btn-lg {
+    padding: 14px 22px;
+    font-size: 15px;
+  }
 }
