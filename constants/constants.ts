@@ -1,1 +1,0 @@
-export const CONSOLE_URL = "https://app.libstackz.com";

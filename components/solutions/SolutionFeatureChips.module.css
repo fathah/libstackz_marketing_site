@@ -1,0 +1,28 @@
+.chipsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 10px;
+}
+
+.chipsContainer .chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--white, #ffffff);
+  border: 1px solid var(--border-light, #d4efdf);
+  border-radius: 14px;
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--neutral-900, #1c1e1c);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .chipsContainer .chip {
+    white-space: normal;
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}

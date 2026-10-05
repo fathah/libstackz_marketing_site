@@ -1,0 +1,193 @@
+.hero {
+  background-color: var(--color-background-tint);
+  /* Leaves an elegant 76px ribbon for the Metrics eyebrow above the fold, matching reference */
+  min-height: calc(100vh - var(--header-height) - 76px);
+  min-height: calc(100dvh - var(--header-height) - 76px);
+  display: flex;
+  align-items: center;
+  padding: clamp(20px, 3vh, 36px) var(--page-padding-desktop);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.heroInner {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 56px;
+  width: 100%;
+}
+
+.heroCopy {
+  width: 600px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heroEyebrow {
+  font-weight: 600;
+  animation: heroFadeUp 0.65s var(--ease-awwwards) 0.06s both;
+}
+
+.heroHeading {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 1.08;
+  color: var(--color-primary-dark);
+  max-width: 560px;
+  animation: heroHeadingUp 0.85s var(--ease-awwwards) 0.16s both;
+}
+
+.heroBody {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.56;
+  color: var(--color-text-secondary);
+  max-width: 520px;
+  animation: heroFadeUp 0.8s var(--ease-awwwards) 0.3s both;
+}
+
+.btnRow {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: heroFadeUp 0.8s var(--ease-awwwards) 0.42s both;
+}
+
+.heroNote {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  animation: heroFadeUp 0.75s var(--ease-awwwards) 0.54s both;
+}
+
+.heroImgWrap {
+  width: 624px;
+  max-width: 100%;
+  flex-shrink: 0;
+  animation: heroImageReveal 0.95s var(--ease-awwwards) 0.22s both;
+}
+
+.heroImg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 624 / 416;
+  border-radius: var(--radius-hero-image);
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 16px 40px -12px rgba(0, 71, 52, 0.1);
+}
+
+/* ==========================================================================
+   AWWWARDS-LEVEL HERO LOADING KEYFRAMES
+   Hardware-accelerated (opacity, transform, clip-path, filter)
+   ========================================================================== */
+@keyframes heroHeadingUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroImageReveal {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0 round var(--radius-hero-image));
+    transform: scale(1.06);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0% 0 round var(--radius-hero-image));
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE SCALING
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .heroInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .heroCopy {
+    width: 100%;
+  }
+
+  .heroHeading {
+    max-width: 100%;
+  }
+
+  .heroBody {
+    max-width: 100%;
+  }
+
+  .heroImgWrap {
+    width: 100%;
+    max-width: 624px;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero {
+    min-height: auto;
+    padding: var(--spacing-section-py-mobile) var(--page-padding-mobile);
+  }
+
+  .heroHeading {
+    font-size: 36px;
+    line-height: 1.12;
+  }
+
+  .heroBody {
+    font-size: 16px;
+  }
+
+  .heroImgWrap {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroEyebrow,
+  .heroHeading,
+  .heroBody,
+  .btnRow,
+  .heroNote,
+  .heroImgWrap {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+}
